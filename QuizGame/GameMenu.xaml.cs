@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using QuizGame.Classes; //rausmachen, nur für test
 
 namespace QuizGame
 {
@@ -25,26 +26,41 @@ namespace QuizGame
         {
             InitializeComponent();
             mainWindow = wnd;
+            
         }
 
         private void BtnStartQuiz_Click(object sender, RoutedEventArgs e)
         {
-
+            Game game = new Game();
+            rQuestion q = game.getQuestion();
+            if (q != null)
+            {
+                foreach (KeyValuePair<string, string> item in q.getResults())
+                {
+                    MessageBox.Show(item.Value);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Keine Fragen mehr verfügbar");
+            }
+            
+            //mainWindow.ToQuiz();
         }
 
         private void BtnHighScore_Click(object sender, RoutedEventArgs e)
         {
-
+            mainWindow.ToHighScore();
         }
 
         private void BtnAddQuestion_Click(object sender, RoutedEventArgs e)
         {
-
+            mainWindow.ToAddQuestion();
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
     }
 }

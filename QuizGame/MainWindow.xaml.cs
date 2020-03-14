@@ -26,7 +26,10 @@ namespace QuizGame
         Quiz quiz;
         public MainWindow()
         {
+            StartWindow start = new StartWindow();
+            start.ShowDialog();
             InitializeComponent();
+            
             addQuestion = new AddQuestion(this);
             gameMenu = new GameMenu(this);
             highScore = new HighScore(this);

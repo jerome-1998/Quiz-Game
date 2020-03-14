@@ -20,9 +20,11 @@ namespace QuizGame
     /// </summary>
     public partial class AddQuestion : Page
     {
-        public AddQuestion()
+        MainWindow mainWindow;
+        public AddQuestion(MainWindow wnd)
         {
             InitializeComponent();
+            mainWindow = wnd;
         }
     }
 }

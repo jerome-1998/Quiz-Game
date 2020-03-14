@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuizDBModelStoreContainer" CdmEntityContainer="QuizDBContext">
+    <EntitySetMapping Name="Player">
+      <EntityTypeMapping TypeName="QuizDBModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="playerNAME" ColumnName="playerNAME" />
+          <ScalarProperty Name="playerPUNKTE" ColumnName="playerPUNKTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="QuizDBModel.Questions">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="qID" ColumnName="qID" />
+          <ScalarProperty Name="questionTEXT" ColumnName="questionTEXT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="QuizDBModel.Results">
+        <MappingFragment StoreEntitySet="Results">
+          <ScalarProperty Name="rID" ColumnName="rID" />
+          <ScalarProperty Name="resultONE" ColumnName="resultONE" />
+          <ScalarProperty Name="relultTWO" ColumnName="relultTWO" />
+          <ScalarProperty Name="resultTHREE" ColumnName="resultTHREE" />
+          <ScalarProperty Name="trueRESULT" ColumnName="trueRESULT" />
+          <ScalarProperty Name="qid" ColumnName="qid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

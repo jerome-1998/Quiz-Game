@@ -25,22 +25,22 @@
                 <SolidColorBrush Color="White"></SolidColorBrush>
             </Label.Foreground>
         </Label>
-        <Button Grid.Row="1" VerticalAlignment="Center" Content="Start" Name="btnStartQuiz" Width="200" Click="BtnStartQuiz_Click">
+        <Button Grid.Row="1" VerticalAlignment="Center" Content="Start" Name="btnStartQuiz" Width="200" Click="BtnStartQuiz_Click" FontWeight="Bold">
             <Button.Background>
                 <SolidColorBrush Color="GreenYellow"></SolidColorBrush>
             </Button.Background>
         </Button>
-        <Button Grid.Row="2" VerticalAlignment="Center" Content="Highscore" Name="btnHighScore" Width="200" Click="BtnHighScore_Click">
+        <Button Grid.Row="2" VerticalAlignment="Center" Content="Highscore" Name="btnHighScore" Width="200" Click="BtnHighScore_Click" FontWeight="Bold">
             <Button.Background>
                 <SolidColorBrush Color="Yellow"></SolidColorBrush>
             </Button.Background>
         </Button>
-        <Button Grid.Row="3" VerticalAlignment="Center" Content="Frage hinzufügen" Name="btnAddQuestion" Width="200" Click="BtnAddQuestion_Click">
+        <Button Grid.Row="3" VerticalAlignment="Center" Content="Frage hinzufügen" Name="btnAddQuestion" Width="200" Click="BtnAddQuestion_Click" FontWeight="Bold">
             <Button.Background>
                 <SolidColorBrush Color="Yellow"></SolidColorBrush>
             </Button.Background>
         </Button>
-        <Button Grid.Row="4" VerticalAlignment="Center" Content="Beenden" Name="btnClose" Width="200" Click="BtnClose_Click">
+        <Button Grid.Row="4" VerticalAlignment="Center" Content="Beenden" Name="btnClose" Width="200" Click="BtnClose_Click" FontWeight="Bold">
             <Button.Background>
                 <SolidColorBrush Color="Yellow"></SolidColorBrush>
             </Button.Background>

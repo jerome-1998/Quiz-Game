@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuizDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="pID" />
+    </Key>
+    <Property Name="pID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="playerNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="playerPUNKTE" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="qID" />
+    </Key>
+    <Property Name="qID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="questionTEXT" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Results" Relationship="Self.fk_qid" FromRole="Questions" ToRole="Results" />
+  </EntityType>
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="rID" />
+    </Key>
+    <Property Name="rID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="resultONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="relultTWO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="resultTHREE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="trueRESULT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="qid" Type="Int32" />
+    <NavigationProperty Name="Questions" Relationship="Self.fk_qid" FromRole="Results" ToRole="Questions" />
+  </EntityType>
+  <Association Name="fk_qid">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+    <End Role="Results" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="qID" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="qid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuizDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Player" EntityType="Self.Player" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" />
+    <EntitySet Name="Results" EntityType="Self.Results" />
+    <AssociationSet Name="fk_qid" Association="Self.fk_qid">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Results" EntitySet="Results" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
