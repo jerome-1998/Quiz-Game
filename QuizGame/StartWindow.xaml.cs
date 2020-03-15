@@ -42,7 +42,7 @@ namespace QuizGame
             for (int i = 0; i <= 100; i++)
             {
                 (sender as BackgroundWorker).ReportProgress(i);
-                Thread.Sleep(20);
+                Thread.Sleep(5);
             }
         }
 

@@ -10,13 +10,13 @@ namespace QuizGame.Classes
     {
         private Random rand = new Random();
         private static List<int> askedQuestions = new List<int>();
-
-        private Player currentPlayer;
+        private int score;
+        private currentPlayer currentPlayer;
         private rQuestion question;
         
         public Game()
         {
-            currentPlayer = new Player();
+            score = 0;
         }
 
         public rQuestion getQuestion()
@@ -28,6 +28,11 @@ namespace QuizGame.Classes
                 {
                     question = new rQuestion(nmbr);
                     askedQuestions.Add(nmbr);
+                    string asked = "";
+                    foreach(int i in askedQuestions)
+                    {
+                        asked += i.ToString()+"\t";
+                    }
                     return question;
                 }
                 else if(askedQuestions.Count == rQuestion.MAXQuestions)
@@ -38,9 +43,28 @@ namespace QuizGame.Classes
             return null;
         }
 
-        public static void setAskedQuestionsToDefault()
+        private static void setAskedQuestionsToDefault()
         {
             askedQuestions.Clear();
+        }
+
+        public void AddScore(int toAdd)
+        {
+            score += toAdd;
+        }
+
+        public int currentScore
+        {
+            get
+            {
+                return score;
+            }
+        }
+
+        public void ExitGame(string playername = "Gast")
+        {
+            setAskedQuestionsToDefault();
+            currentPlayer currentPlayer = new currentPlayer(score,playername);
         }
 
     }

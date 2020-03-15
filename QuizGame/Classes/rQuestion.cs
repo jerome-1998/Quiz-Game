@@ -15,6 +15,7 @@ namespace QuizGame.Classes
         private static QuizDBContext ctx = new QuizDBContext();
         public rQuestion(int Auswahl)
         {
+            
             Questions questions = ctx.Questions.Where(x => x.qID.Equals(Auswahl)).FirstOrDefault();
             qID = questions.qID;
             qText = questions.questionTEXT;
@@ -29,14 +30,21 @@ namespace QuizGame.Classes
             }
         }
         
-        public string getQuestion()
+        public string questionText
         {
-            return this.qText;
+            get
+            {
+                return this.qText;
+            }
         }
 
-        public Dictionary<string,string> getResults()
+        public Dictionary<string,string> resultList
         {
-            return results.getAnswers;
+            get
+            {
+                return results.getAnswers;
+            }
+            
         }
     }
 }

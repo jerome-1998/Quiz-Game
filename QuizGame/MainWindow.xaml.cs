@@ -24,6 +24,7 @@ namespace QuizGame
         GameMenu gameMenu;
         HighScore highScore;
         Quiz quiz;
+        FinishGame finishGame;
         public MainWindow()
         {
             StartWindow start = new StartWindow();
@@ -55,6 +56,12 @@ namespace QuizGame
         public void ToQuiz()
         {
             myFrame.Content = quiz;
+        }
+
+        public void ToFinishGame(int score)
+        {
+            finishGame = new FinishGame(this, score);
+            myFrame.Content = finishGame;
         }
     }
 }

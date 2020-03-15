@@ -6,9 +6,50 @@
       xmlns:local="clr-namespace:QuizGame"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Quiz" Background="Gray">
+      Title="Quiz" Background="Gray" Loaded="Page_Loaded">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Question Value-->
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Name="lblQuestionValue"></Label>
+        <!--JOKER-->
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal" Name="spJoker">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="30,5,30,5"></Setter>
+                    <Setter Property="Width" Value="150"></Setter>
+                    <Setter Property="Background" Value="LawnGreen"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Button Name="btnJokerFiftyFifty" Content="50/50" ></Button>
+            <Button Name="btnJokerTelephone" Content="Telefonjoker" ></Button>
+            <Button Name="btnJokerCrowd" Content="Publikumsjoker"></Button>
+        </StackPanel>
+        <!--Question-->
+        <Label Name="lblQuestion" Grid.Row="2"></Label>
+        <!--Results-->
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Name="spResults">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0,5,0,5"></Setter>
+                    <Setter Property="Width" Value="150"></Setter>
+                    <Setter Property="Background" Value="Yellow"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                </Style>
+            </StackPanel.Resources>
+        </StackPanel>
+        <!--Exit Game-->
+        <Button Grid.Row="4" HorizontalAlignment="Center" Width="150" FontWeight="Bold" Background="Red" Margin="0,5,0,5" Name="btnExitGame" Content="Spiel beenden" Click="BtnExitGame_Click"></Button>
     </Grid>
 </Page>

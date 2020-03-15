@@ -68,12 +68,15 @@
       <DependentUpon>AddQuestion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Game.cs" />
+    <Compile Include="FinishGame.xaml.cs">
+      <DependentUpon>FinishGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HighScore.xaml.cs">
       <DependentUpon>HighScore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\qResults.cs" />
     <Compile Include="Classes\rQuestion.cs" />
-    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\currentPlayer.cs" />
     <Compile Include="Player.cs">
       <DependentUpon>QuizDBModel.tt</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
       <DependentUpon>StartWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AddQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FinishGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

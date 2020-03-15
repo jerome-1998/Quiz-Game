@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Jerome\source\repos\QuizGame\QuizGame\App.xaml
-6-1451616639
+7-1353213619
 2520570272
-20-1330406580
+211613252957
 18-623204156
-AddQuestion.xaml;GameMenu.xaml;HighScore.xaml;MainWindow.xaml;Quiz.xaml;StartWindow.xaml;
+AddQuestion.xaml;FinishGame.xaml;GameMenu.xaml;HighScore.xaml;MainWindow.xaml;Quiz.xaml;StartWindow.xaml;
 
 False
 
