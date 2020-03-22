@@ -26,5 +26,41 @@ namespace QuizGame
             InitializeComponent();
             mainWindow = wnd;
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //take top ten players
+            QuizDBContext ctx = new QuizDBContext();
+            List<Player> playerList = ctx.Player.OrderByDescending(x => x.playerPUNKTE).ThenBy(x => x.playerNAME).Take(10).ToList();
+            int nmbr = 1;
+            foreach(Player p in playerList)
+            {
+                StackPanel spColumn = new StackPanel();
+                spColumn.Orientation = Orientation.Horizontal;
+                spColumn.HorizontalAlignment = HorizontalAlignment.Center;
+
+                Label playerRank = new Label();
+                playerRank.Content = nmbr.ToString();
+                playerRank.Width = 100;
+                nmbr++;
+                spColumn.Children.Add(playerRank);
+                Label playerName = new Label();
+                playerName.Content = p.playerNAME;
+                playerName.Width = 300;
+                spColumn.Children.Add(playerName);
+                Label playerScore = new Label();
+                playerScore.Content = p.playerPUNKTE;
+                playerScore.Width = 300;
+                spColumn.Children.Add(playerScore);
+                spHighScoreList.Children.Add(spColumn);
+            }
+            //parentGrid.DataContext = playerList;
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            spHighScoreList.Children.Clear();
+            mainWindow.ToGameMenu();
+        }
     }
 }

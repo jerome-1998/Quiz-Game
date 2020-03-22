@@ -6,12 +6,49 @@
       xmlns:local="clr-namespace:QuizGame"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="FinishGame">
+      Title="FinishGame" Loaded="Page_Loaded">
     <Page.Background>
         <SolidColorBrush Color="Gray"></SolidColorBrush>
     </Page.Background>
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Background" Value="Yellow"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontWeight" Value="bold"></Setter>
+            <Setter Property="Background" Value="GreenYellow"></Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Name="lblPlayerPoints" Grid.ColumnSpan="2"></Label>
+        <Label Name="lblPlayerName" Grid.Row="1" Grid.ColumnSpan="2" Content="Dein Name?" VerticalAlignment="Center"></Label>
+        <TextBox Grid.Row="2" Grid.ColumnSpan="2" Name="tbxName"></TextBox>
+        <Button Grid.Row="3" Grid.Column="1" Content="In Highscore eintragen" Name="btnSendToDB" Click="BtnSendToDB_Click"></Button>
+        <Button Grid.Row="3" Grid.Column="0" Content="Abbrechen" Name="btnCancel" Click="BtnCancel_Click" Background="Orange"></Button>
     </Grid>
 </Page>

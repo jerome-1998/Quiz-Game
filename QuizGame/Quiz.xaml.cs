@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using QuizGame.Classes;
+using System.Diagnostics;
 
 namespace QuizGame
 {
@@ -24,6 +25,8 @@ namespace QuizGame
         MainWindow mainWindow;
         private static Random rand = new Random();
         private Game currentGame;
+        private static int points = 0;
+        private Stopwatch watch =new Stopwatch();
         
         public Quiz(MainWindow wnd)
         {
@@ -39,16 +42,11 @@ namespace QuizGame
 
         private void BtnExitGame_Click(object sender, RoutedEventArgs e)
         {
-            //mainWindow.ToFinishGame(currentGame.currentScore);
             currentGame.ExitGame();
+            resetWatch();
             Clean_Gui();
-            mainWindow.ToGameMenu();
-        }
-
-        private void CreateGUI()
-        {
-            //Take a random Question
-            NextQuestion();
+            mainWindow.ToFinishGame(points);
+            resetPoints();
         }
 
         public void Click_CheckResult(object sender, RoutedEventArgs args)
@@ -57,18 +55,38 @@ namespace QuizGame
             {
                 MessageBox.Show("RICHTIG!");
                 Clean_Gui();
+                //Count until here
+                points += getPoints();
+                //start again to count
+                resetWatch();
+                watch.Start();
                 NextQuestion();
             }
             else
             {
+                //reset all
                 MessageBox.Show("Die Antwort war leider falsch!");
+                resetWatch();
                 currentGame.ExitGame();
-                mainWindow.ToGameMenu();
+                Clean_Gui();
+                mainWindow.ToFinishGame(points);
+                resetPoints();
             }
+        }
+
+        private void CreateGUI()
+        {
+            //Count Seconds
+            watch.Start();
+            //Take a random Question from DB and show it
+            NextQuestion();
         }
 
         private void NextQuestion()
         {
+            lblGamePoints.Content = points.ToString();
+            //Make a Button list with the results and shuffle the list, than create buttons
+            List<Button> resultList = new List<Button>();
             rQuestion q = currentGame.getQuestion();
             if (q != null)
             {
@@ -79,14 +97,22 @@ namespace QuizGame
                     tmpResults.Content = item.Value;
                     tmpResults.Name = item.Key;
                     tmpResults.Click += new RoutedEventHandler(Click_CheckResult);
-                    spResults.Children.Add(tmpResults);
+                    resultList.Add(tmpResults);
+                    Shuffle(resultList);
+                }
+                foreach(Button b in resultList)
+                {
+                    spResults.Children.Add(b);
                 }
             }
             else
             {
+                //All Questions asked, reset all
                 MessageBox.Show("Alle Fragen richtig beantwortet");
+                resetWatch();
                 currentGame.ExitGame();
-                mainWindow.ToGameMenu();
+                mainWindow.ToFinishGame(points);
+                resetPoints();
             }
         }
 
@@ -106,6 +132,24 @@ namespace QuizGame
                 inputList[i] = inputList[iIndex];
                 inputList[iIndex] = tTmp;
             }
+        }
+
+        private void resetWatch()
+        {
+            watch.Stop();
+            watch.Reset();
+        }
+
+        private int getPoints()
+        {
+            watch.Stop();
+            TimeSpan ts = watch.Elapsed;
+            return (int)((1 / ts.TotalSeconds) * 100);
+        }
+
+        private void resetPoints()
+        {
+            points = 0;
         }
 
         

@@ -7,7 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Quiz" Background="Gray" Loaded="Page_Loaded">
-
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="25"></Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -20,8 +26,8 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <!--Question Value-->
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Name="lblQuestionValue"></Label>
+        <!--Current Points-->
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Name="lblGamePoints"></Label>
         <!--JOKER-->
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal" Name="spJoker">
             <StackPanel.Resources>
