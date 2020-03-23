@@ -27,6 +27,7 @@ namespace QuizGame
         private Game currentGame;
         private static int points = 0;
         private Stopwatch watch =new Stopwatch();
+        rQuestion currentQuestion;
         
         public Quiz(MainWindow wnd)
         {
@@ -76,6 +77,11 @@ namespace QuizGame
 
         private void CreateGUI()
         {
+            //reset all Joker
+            foreach(Button b in spJoker.Children)
+            {
+                b.IsEnabled = true;
+            }
             //Count Seconds
             watch.Start();
             //Take a random Question from DB and show it
@@ -90,6 +96,7 @@ namespace QuizGame
             rQuestion q = currentGame.getQuestion();
             if (q != null)
             {
+                currentQuestion = q;
                 lblQuestion.Content = q.questionText;
                 foreach (KeyValuePair<string, string> item in q.resultList)
                 {
@@ -118,11 +125,13 @@ namespace QuizGame
 
         private void Clean_Gui()
         {
+            //Clean the result vision
             spResults.Children.Clear();
         }
 
         private void Shuffle<T>(List<T> inputList)
         {
+            //Shuffle Method for Answers
             int iIndex;
             T tTmp;
             for (int i = 1; i < inputList.Count; ++i)
@@ -142,6 +151,7 @@ namespace QuizGame
 
         private int getPoints()
         {
+            //calculate Score
             watch.Stop();
             TimeSpan ts = watch.Elapsed;
             return (int)((1 / ts.TotalSeconds) * 100);
@@ -152,6 +162,52 @@ namespace QuizGame
             points = 0;
         }
 
-        
+        private void BtnJoker_Click(object sender, RoutedEventArgs e)
+        {
+            //Joker Buttons
+            Button joker = sender as Button;
+            joker.IsEnabled = false;
+
+            switch(joker.Name)
+            {
+                case "btnJokerFiftyFifty":
+                    JokerFiftyFifty();
+                    break;
+                case "btnJokerTelephone":
+                    Joker();
+                    break;
+                case "btnJokerCrowd":
+                    Joker();
+                    break;
+            }
+        }
+
+        private void Joker()
+        {
+            string result;
+            result = currentQuestion.resultList["resultTrue"];
+            MessageBox.Show("Die richtige Antwort lautet: \n"+result);
+        }
+
+        private void JokerFiftyFifty()
+        {
+            List<Button> falseResultList = new List<Button>();
+            foreach(Button b in spResults.Children)
+            {
+                if(b.Name !="resultTrue")
+                {
+                    falseResultList.Add(b);
+                }
+            }
+            Shuffle(falseResultList);
+            falseResultList.RemoveAt(0);
+            foreach (Button b in spResults.Children)
+            {
+                if(falseResultList.Where(x=>x.Name.Equals(b.Name)).FirstOrDefault()!=null)
+                {
+                    b.IsEnabled = false;
+                }
+            }
+        }
     }
 }

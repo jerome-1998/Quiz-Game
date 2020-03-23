@@ -32,3 +32,4 @@ C:\Users\Jerome\source\repos\QuizGame\QuizGame\obj\Debug\QuizGame_Content.g.cs
 C:\Users\Jerome\source\repos\QuizGame\QuizGame\obj\Debug\QuizGame.csproj.CopyComplete
 C:\Users\Jerome\source\repos\QuizGame\QuizGame\obj\Debug\FinishGame.g.cs
 C:\Users\Jerome\source\repos\QuizGame\QuizGame\obj\Debug\FinishGame.baml
+C:\Users\Jerome\source\repos\QuizGame\QuizGame\bin\Debug\de\EntityFramework.SqlServer.resources.dll

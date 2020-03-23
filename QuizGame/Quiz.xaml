@@ -38,9 +38,9 @@
                     <Setter Property="FontWeight" Value="Bold"></Setter>
                 </Style>
             </StackPanel.Resources>
-            <Button Name="btnJokerFiftyFifty" Content="50/50" ></Button>
-            <Button Name="btnJokerTelephone" Content="Telefonjoker" ></Button>
-            <Button Name="btnJokerCrowd" Content="Publikumsjoker"></Button>
+            <Button Name="btnJokerFiftyFifty" Content="50/50" Click="BtnJoker_Click"></Button>
+            <Button Name="btnJokerTelephone" Content="Telefonjoker" Click="BtnJoker_Click"></Button>
+            <Button Name="btnJokerCrowd" Content="Publikumsjoker" Click="BtnJoker_Click"></Button>
         </StackPanel>
         <!--Question-->
         <Label Name="lblQuestion" Grid.Row="2"></Label>
