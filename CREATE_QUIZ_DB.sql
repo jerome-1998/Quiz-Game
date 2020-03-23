@@ -41,17 +41,12 @@ CREATE TABLE Player(
 		playerPUNKTE INT
 	)
 
-INSERT INTO Player (playerNAME, playerPUNKTE) VALUES
-	('Jerome', 105), ('Zers',70)
-
 INSERT INTO Questions(questionTEXT) VALUES
 	('Was sind die Vereinsfarben des 1. FC Saarbrückens?'),
 	('Welches ist KEINE Programmiersprache?'),
-	('Von welchem Entwicklerstudio wurde das Spiel "Skyrim" entwickelt?'),
-	('Wo saufen eine Tugend ist, kann .... keine Schande sein.')
+	('Von welchem Entwicklerstudio wurde das Spiel "Skyrim" entwickelt?')
 
 INSERT INTO Results(resultONE,relultTWO,resultTHREE,trueRESULT, qid) VALUES
 	('Blau-Weiß', 'Schwarz-Weiß', 'Gelb', 'Blau-Schwarz',0),
 	('Python', 'Ruby', 'Go', 'HTML',1),
-	('Paradox', 'Ubisoft', 'Sega', 'Bethesda',2),
-	('schlafen', 'erbrechen', 'jubeln', 'kotzen',3)
+	('Paradox', 'Ubisoft', 'Sega', 'Bethesda',2)
